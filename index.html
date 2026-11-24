@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>유정PD | 공이공이 프로덕션</title>
+<meta name="description" content="영상편집 × AI — 유정PD의 플러그인, 프롬프트, 문의 링크 모음">
+<meta property="og:title" content="유정PD | 공이공이 프로덕션">
+<meta property="og:description" content="영상편집 × AI — 플러그인 · 프롬프트 · 1:1 문의">
+<meta property="og:image" content="assets/profile-sq.jpg">
+<meta name="theme-color" content="#ece8ff">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!--
+  ▼ 링크 수정은 아래 <main> 안의 a 태그 href만 바꾸면 돼요.
+  - 0202 플러그인 스토어      https://www.0202production.com/store
+  - 0202Transition v2        https://www.0202production.com/shop_view/?idx=8
+  - 0202Swatch               https://www.0202production.com/shop_view/?idx=7
+  - 프리미어 자동편집 프롬프트 https://blog.naver.com/bokjjeong/224477960368
+  - 1:1 문의 (카카오 채널)     https://pf.kakao.com/_cLTxnX/chat
+-->
+<style>
+  :root{
+    --ink:#1d1a2e; --sub:#6b6585; --violet:#7b5cff; --violet2:#a68bff;
+    --glass:rgba(255,255,255,.55); --line:rgba(255,255,255,.75);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{min-height:100%}
+  body{
+    font-family:"Pretendard",-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--ink);
+    background:#f1eeff;
+    background-image:
+      radial-gradient(60% 40% at 0% 0%, #dcd4ff 0%, transparent 70%),
+      radial-gradient(50% 35% at 100% 18%, #f3d9ff 0%, transparent 70%),
+      radial-gradient(70% 45% at 50% 100%, #d6e4ff 0%, transparent 70%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+  .orb{position:fixed;border-radius:50%;filter:blur(60px);opacity:.55;z-index:0;pointer-events:none;animation:drift 14s ease-in-out infinite alternate}
+  .orb.a{width:220px;height:220px;background:#b9a6ff;top:-40px;right:-60px}
+  .orb.b{width:180px;height:180px;background:#ffc9ef;top:45%;left:-80px;animation-delay:-5s}
+  .orb.c{width:200px;height:200px;background:#a9c8ff;bottom:-60px;right:-40px;animation-delay:-9s}
+  @keyframes drift{to{transform:translate(20px,30px) scale(1.1)}}
+
+  .wrap{position:relative;z-index:1;max-width:440px;margin:0 auto;padding:22px 18px calc(36px + env(safe-area-inset-bottom))}
+
+  /* hero */
+  .hero{position:relative;border-radius:30px;overflow:visible;margin-top:6px}
+  .photo{
+    position:relative;border-radius:30px;overflow:hidden;aspect-ratio:4/5;
+    box-shadow:0 24px 60px -20px rgba(91,60,200,.45);
+    border:1px solid var(--line);
+  }
+  .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}
+  .photo::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(255,255,255,0) 55%,rgba(30,20,70,.55) 100%)}
+  .hero-text{position:absolute;left:22px;right:22px;bottom:20px;z-index:2;color:#fff}
+  .hero-text .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.08em;
+    padding:5px 10px;border-radius:99px;background:rgba(255,255,255,.22);
+    border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);margin-bottom:10px}
+  .hero-text h1{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+  .hero-text h1 span{font-weight:500;opacity:.85;font-size:17px;display:block;margin-top:4px;letter-spacing:-.01em}
+
+  .chip{
+    position:absolute;z-index:3;display:flex;align-items:center;gap:8px;
+    padding:9px 13px;border-radius:16px;font-size:12px;font-weight:600;color:var(--ink);
+    background:rgba(255,255,255,.62);border:1px solid var(--line);
+    backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);
+    box-shadow:0 10px 30px -12px rgba(80,50,180,.4);
+    animation:float 5s ease-in-out infinite;
+  }
+  .chip.c1{top:22px;left:-8px}
+  .chip.c2{top:190px;right:-8px;animation-delay:-2s}
+  .chip .dot{width:8px;height:8px;border-radius:50%;background:#33d17a;box-shadow:0 0 0 3px rgba(51,209,122,.2)}
+  .chip .ai{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:800;
+    background:linear-gradient(135deg,var(--violet),var(--violet2))}
+  .typing i{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--violet);margin-left:2px;animation:blink 1.2s infinite}
+  .typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+  @keyframes float{50%{transform:translateY(-6px)}}
+  @keyframes blink{0%,100%{opacity:.2}50%{opacity:1}}
+
+  /* contact */
+  .contact{margin:18px 2px 22px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .contact p{font-size:13px;color:var(--sub);line-height:1.5}
+  .contact p b{color:var(--ink);font-weight:600}
+  .mail{flex-shrink:0;font-size:12px;font-weight:600;color:var(--violet);text-decoration:none;
+    padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.6);border:1px solid var(--line)}
+
+  /* links */
+  .section{font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--sub);margin:0 4px 10px;text-transform:uppercase}
+  .links{display:flex;flex-direction:column;gap:11px}
+  .card{
+    position:relative;display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);
+    padding:14px 16px 14px 14px;border-radius:22px;
+    background:var(--glass);border:1px solid var(--line);
+    backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);
+    box-shadow:0 8px 24px -14px rgba(80,50,180,.35), inset 0 1px 0 rgba(255,255,255,.8);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .card:active{transform:scale(.98)}
+  .icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:22px;flex-shrink:0;
+    background:linear-gradient(145deg,#ffffff,#ece7ff);border:1px solid rgba(255,255,255,.9);
+    box-shadow:0 6px 14px -8px rgba(91,60,200,.5)}
+  .txt{flex:1;min-width:0}
+  .txt strong{display:block;font-size:15px;font-weight:700;letter-spacing:-.01em}
+  .txt small{display:block;font-size:12px;color:var(--sub);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .arrow{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;
+    background:rgba(123,92,255,.1);color:var(--violet);font-size:14px}
+
+  .card.feature{
+    background:linear-gradient(135deg,#2a2250 0%,#1b1736 100%);color:#fff;border-color:rgba(166,139,255,.35);
+    box-shadow:0 18px 40px -16px rgba(91,60,200,.7), inset 0 1px 0 rgba(255,255,255,.12);
+    overflow:hidden;
+  }
+  .card.feature::before{content:"";position:absolute;width:160px;height:160px;border-radius:50%;
+    background:radial-gradient(circle,rgba(166,139,255,.55),transparent 70%);top:-70px;left:-30px}
+  .card.feature .icon{background:linear-gradient(145deg,#7b5cff,#b59dff);border-color:rgba(255,255,255,.25)}
+  .card.feature .txt small{color:rgba(255,255,255,.65)}
+  .card.feature .arrow{background:rgba(255,255,255,.14);color:#fff}
+  .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;margin-left:6px;vertical-align:2px;
+    background:linear-gradient(90deg,#7b5cff,#d17bff);color:#fff}
+  .card.feature .badge{background:#fff;color:#5b3cc8}
+
+  footer{text-align:center;margin-top:30px;font-size:11px;color:var(--sub);letter-spacing:.04em}
+  footer b{font-weight:700;color:var(--ink)}
+
+  .reveal{opacity:0;transform:translateY(14px);animation:in .6s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes in{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+  <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
+
+  <div class="wrap">
+    <section class="hero reveal">
+      <div class="photo">
+        <img src="assets/profile-full.jpg" alt="유정PD 프로필 사진">
+      </div>
+      <div class="chip c1"><span class="dot"></span>Premiere × AI</div>
+      <div class="chip c2"><span class="ai">AI</span><span class="typing">자동편집 중<i></i><i></i><i></i></span></div>
+      <div class="hero-text">
+        <span class="tag">0202 PRODUCTION</span>
+        <h1>유정PD<span>영상편집 × AI, 공이공이 프로덕션</span></h1>
+      </div>
+    </section>
+
+    <div class="contact reveal" style="animation-delay:.08s">
+      <p>협업·광고 문의<br><b>yooj2220@naver.com</b></p>
+      <a class="mail" href="mailto:yooj2220@naver.com">💌 메일 보내기</a>
+    </div>
+
+    <div class="section reveal" style="animation-delay:.12s">Links</div>
+    <main class="links">
+      <a class="card reveal" style="animation-delay:0.16s" href="https://www.0202production.com/store" target="_blank" rel="noopener">
+        <span class="icon">🛒</span>
+        <span class="txt"><strong>0202 플러그인 스토어</strong><small>공이공이 프로덕션 플러그인 전체 보기</small></span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="card feature reveal" style="animation-delay:0.22s" href="https://www.0202production.com/shop_view/?idx=8" target="_blank" rel="noopener">
+        <span class="icon">✨</span>
+        <span class="txt"><strong>0202Transition v2<span class="badge">NEW</span></strong><small>프리미어 예능 효과 패널</small></span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="card reveal" style="animation-delay:0.28s" href="https://www.0202production.com/shop_view/?idx=7" target="_blank" rel="noopener">
+        <span class="icon">🎨</span>
+        <span class="txt"><strong>0202Swatch</strong><small>프리미어 컬러 저장 위젯</small></span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="card reveal" style="animation-delay:0.34s" href="https://blog.naver.com/bokjjeong/224477960368" target="_blank" rel="noopener">
+        <span class="icon">🎬</span>
+        <span class="txt"><strong>클로드로 프리미어 자동편집하는 법</strong><small>프롬프트 전문 공개</small></span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="card reveal" style="animation-delay:0.40s" href="https://pf.kakao.com/_cLTxnX/chat" target="_blank" rel="noopener">
+        <span class="icon">💬</span>
+        <span class="txt"><strong>1:1 문의</strong><small>카카오톡 채널로 바로 상담</small></span>
+        <span class="arrow">↗</span>
+      </a>
+    </main>
+
+    <footer class="reveal" style="animation-delay:.46s">© <b>0202 Production</b> · 유정PD</footer>
+  </div>
+</body>
+</html>
