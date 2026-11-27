@@ -139,6 +139,10 @@
   .toast{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;pointer-events:none;
     padding:12px 18px;border-radius:14px;background:#1d1a2e;color:#fff;font-size:13px;font-weight:600;box-shadow:0 12px 30px -10px rgba(30,20,70,.5);transition:all .25s ease;z-index:10}
   .toast.show{opacity:1;transform:translate(-50%,0)}
+  .card.kakao{background:#fee500;border-color:#f2d900;color:#191600;box-shadow:0 10px 26px -14px rgba(160,130,0,.55), inset 0 1px 0 rgba(255,255,255,.6)}
+  .card.kakao .icon{background:#fff6a8;border-color:rgba(255,255,255,.8);box-shadow:none}
+  .card.kakao .txt small{color:rgba(25,22,0,.65)}
+  .card.kakao .arrow{background:rgba(25,22,0,.1);color:#191600}
 </style>
 </head>
 <body>
@@ -164,13 +168,13 @@
 
     <div class="section reveal" style="animation-delay:.12s">Links</div>
     <main class="links">
-      <a class="card reveal" style="animation-delay:0.16s" href="https://www.0202production.com/store" target="_blank" rel="noopener">
+      <a class="card feature reveal" style="animation-delay:0.16s" href="https://www.0202production.com/store" target="_blank" rel="noopener">
         <span class="icon">🛒</span>
         <span class="txt"><strong>0202 플러그인 스토어</strong><small>공이공이 프로덕션 플러그인 전체 보기</small></span>
         <span class="arrow">↗</span>
       </a>
       <hr class="divider" aria-hidden="true">
-      <a class="card feature reveal" style="animation-delay:0.21s" href="https://www.0202production.com/shop_view/?idx=8" target="_blank" rel="noopener">
+      <a class="card reveal" style="animation-delay:0.21s" href="https://www.0202production.com/shop_view/?idx=8" target="_blank" rel="noopener">
         <span class="icon">✨</span>
         <span class="txt"><strong>0202Transition v2<span class="badge">NEW</span></strong><small>프리미어 예능 효과 패널</small></span>
         <span class="arrow">↗</span>
@@ -192,7 +196,7 @@
         <span class="arrow">↗</span>
       </a>
       <hr class="divider" aria-hidden="true">
-      <a class="card reveal" style="animation-delay:0.41s" href="https://pf.kakao.com/_cLTxnX/chat" target="_blank" rel="noopener">
+      <a class="card kakao reveal" style="animation-delay:0.41s" href="https://pf.kakao.com/_cLTxnX/chat" target="_blank" rel="noopener">
         <span class="icon">💬</span>
         <span class="txt"><strong>1:1 문의</strong><small>카카오톡 채널로 바로 상담</small></span>
         <span class="arrow">↗</span>
