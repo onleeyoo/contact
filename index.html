@@ -134,6 +134,11 @@
   .reveal{opacity:0;transform:translateY(14px);animation:in .6s cubic-bezier(.2,.7,.2,1) forwards}
   @keyframes in{to{opacity:1;transform:none}}
   @media (prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none}}
+  .mail{font-family:inherit;cursor:pointer}
+  .divider{border:0;height:1px;margin:6px 18px;background:linear-gradient(90deg,transparent,rgba(123,92,255,.35),transparent)}
+  .toast{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;pointer-events:none;
+    padding:12px 18px;border-radius:14px;background:#1d1a2e;color:#fff;font-size:13px;font-weight:600;box-shadow:0 12px 30px -10px rgba(30,20,70,.5);transition:all .25s ease;z-index:10}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
 </style>
 </head>
 <body>
@@ -154,7 +159,7 @@
 
     <div class="contact reveal" style="animation-delay:.08s">
       <p>협업·광고 문의<br><b>yooj2220@naver.com</b></p>
-      <a class="mail" href="mailto:yooj2220@naver.com">💌 메일 보내기</a>
+      <button type="button" class="mail" id="copyMail" data-mail="yooj2220@naver.com">💌 메일 보내기</button>
     </div>
 
     <div class="section reveal" style="animation-delay:.12s">Links</div>
@@ -164,27 +169,30 @@
         <span class="txt"><strong>0202 플러그인 스토어</strong><small>공이공이 프로덕션 플러그인 전체 보기</small></span>
         <span class="arrow">↗</span>
       </a>
-      <a class="card feature reveal" style="animation-delay:0.22s" href="https://www.0202production.com/shop_view/?idx=8" target="_blank" rel="noopener">
+      <hr class="divider" aria-hidden="true">
+      <a class="card feature reveal" style="animation-delay:0.21s" href="https://www.0202production.com/shop_view/?idx=8" target="_blank" rel="noopener">
         <span class="icon">✨</span>
         <span class="txt"><strong>0202Transition v2<span class="badge">NEW</span></strong><small>프리미어 예능 효과 패널</small></span>
         <span class="arrow">↗</span>
       </a>
-      <a class="card reveal" style="animation-delay:0.28s" href="https://www.0202production.com/shop_view/?idx=7" target="_blank" rel="noopener">
+      <a class="card reveal" style="animation-delay:0.26s" href="https://www.0202production.com/shop_view/?idx=7" target="_blank" rel="noopener">
         <span class="icon">🎨</span>
         <span class="txt"><strong>0202Swatch</strong><small>프리미어 컬러 저장 위젯</small></span>
         <span class="arrow">↗</span>
       </a>
-      <a class="card reveal" style="animation-delay:0.34s" href="https://blog.naver.com/bokjjeong/224477960368" target="_blank" rel="noopener">
-        <span class="icon">🎬</span>
-        <span class="txt"><strong>클로드로 프리미어 자동편집하는 법</strong><small>프롬프트 전문 공개</small></span>
-        <span class="arrow">↗</span>
-      </a>
-      <a class="card reveal" style="animation-delay:0.40s" href="https://cameraangles.0202production.com/" target="_blank" rel="noopener">
+      <a class="card reveal" style="animation-delay:0.31s" href="https://cameraangles.0202production.com/" target="_blank" rel="noopener">
         <span class="icon">🎥</span>
         <span class="txt"><strong>카메라 앵글 시뮬레이터<span class="badge">FREE</span></strong><small>AI 영상·스토리보드용 구도 도구</small></span>
         <span class="arrow">↗</span>
       </a>
-      <a class="card reveal" style="animation-delay:0.46s" href="https://pf.kakao.com/_cLTxnX/chat" target="_blank" rel="noopener">
+      <hr class="divider" aria-hidden="true">
+      <a class="card reveal" style="animation-delay:0.36s" href="https://blog.naver.com/bokjjeong/224477960368" target="_blank" rel="noopener">
+        <span class="icon">🎬</span>
+        <span class="txt"><strong>클로드로 프리미어 자동편집하는 법</strong><small>프롬프트 전문 공개</small></span>
+        <span class="arrow">↗</span>
+      </a>
+      <hr class="divider" aria-hidden="true">
+      <a class="card reveal" style="animation-delay:0.41s" href="https://pf.kakao.com/_cLTxnX/chat" target="_blank" rel="noopener">
         <span class="icon">💬</span>
         <span class="txt"><strong>1:1 문의</strong><small>카카오톡 채널로 바로 상담</small></span>
         <span class="arrow">↗</span>
@@ -193,5 +201,18 @@
 
     <footer class="reveal" style="animation-delay:.52s">© <b>0202 Production</b> · 유정PD</footer>
   </div>
+  <div class="toast" id="toast" role="status" aria-live="polite">메일 주소가 복사됐어요</div>
+<script>
+  (function(){
+    var b=document.getElementById('copyMail'), t=document.getElementById('toast'), timer;
+    function show(msg){ t.textContent=msg; t.classList.add('show'); clearTimeout(timer); timer=setTimeout(function(){t.classList.remove('show')},1800); }
+    function fallback(v){ var ta=document.createElement('textarea'); ta.value=v; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0,v.length); var ok=false; try{ ok=document.execCommand('copy'); }catch(e){} document.body.removeChild(ta); return ok; }
+    b.addEventListener('click',function(){
+      var v=b.getAttribute('data-mail');
+      if(navigator.clipboard&&window.isSecureContext){ navigator.clipboard.writeText(v).then(function(){show('메일 주소가 복사됐어요')},function(){show(fallback(v)?'메일 주소가 복사됐어요':v)}); }
+      else { show(fallback(v)?'메일 주소가 복사됐어요':v); }
+    });
+  })();
+</script>
 </body>
 </html>
